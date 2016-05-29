@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+	<Gufo_CustomerGroupByNewsletterSubscription>
+		<active>true</active>
+		<codePool>local</codePool>
+	</Gufo_CustomerGroupByNewsletterSubscription>
+	</modules>
+</config>

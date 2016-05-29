@@ -12,7 +12,7 @@
                     <modules>
                         <Gufo_CustomerGroupByNewsletterSubscription before="Mage_Newsletter">
                             Gufo_CustomerGroupByNewsletterSubscription
-                        </Gufo_CustomerGroupByNewsletterSubscriptionr>
+                        </Gufo_CustomerGroupByNewsletterSubscription>
                     </modules>
                 </args>
             </newsletter>
