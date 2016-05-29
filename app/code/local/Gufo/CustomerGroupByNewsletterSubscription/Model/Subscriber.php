@@ -377,10 +377,29 @@ class Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber extends Mage_C
         if ($this->hasCheckCode() && $this->getCode() != $this->getCheckCode()) {
             Mage::throwException(Mage::helper('newsletter')->__('Invalid subscription confirmation code.'));
         }
-        
+
+        //BEGIN COSENTINOSHOP: Presaldi (27/05/2016)
+        //Set customer group depending on the newsletter subscription status
+        $customerSession = Mage::getSingleton('customer/session');
+        if ($customerSession->isLoggedIn()) {
+            $customer = $customerSession->getCustomer();
+            $storeId = $this->getStoreId() ? $this->getStoreId() : Mage::app()->getStore()->getId();
+            $groupId = Mage::getStoreConfig(Mage_Customer_Model_Group::XML_PATH_DEFAULT_ID, $storeId);
+            $customer->setGroupId($groupId);
+        }
+        //END
+
         $this->setSubscriberStatus(self::STATUS_UNSUBSCRIBED)
             ->save();
         $this->sendUnsubscriptionEmail();
+
+
+        //BEGIN COSENTINOSHOP: Presaldi (27/05/2016)
+        $customer->save();
+        //END
+
+
+
         return $this;
     }
 
