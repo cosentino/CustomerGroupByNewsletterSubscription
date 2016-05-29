@@ -22,7 +22,7 @@
         <models>
             <newsletter>
                 <rewrite>
-                    <subscriber>Gufo_Newsletter_Model_Subscriber</subscriber>
+                    <subscriber>Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber</subscriber>
                 </rewrite>
             </newsletter>
         </models>

@@ -46,7 +46,7 @@
  * @package     Mage_Newsletter
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Gufo_Newsletter_Model_Subscriber extends Mage_Core_Model_Abstract
+class Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber extends Mage_Core_Model_Abstract
 {
     const STATUS_SUBSCRIBED     = 1;
     const STATUS_NOT_ACTIVE     = 2;
