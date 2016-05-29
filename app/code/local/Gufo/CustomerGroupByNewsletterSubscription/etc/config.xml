@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Gufo_CustomerGroupByNewsletterSubscription>
+            <version>0.1.0</version>
+        </Gufo_CustomerGroupByNewsletterSubscription>
+    </modules>
+    <frontend>
+        <routers>
+            <newsletter>
+                <args>
+                    <modules>
+                        <Gufo_CustomerGroupByNewsletterSubscription before="Mage_Newsletter">
+                            Gufo_CustomerGroupByNewsletterSubscription
+                        </Gufo_CustomerGroupByNewsletterSubscriptionr>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+            <newsletter>
+                <rewrite>
+                    <subscriber>Gufo_Newsletter_Model_Subscriber</subscriber>
+                </rewrite>
+            </newsletter>
+        </models>
+    </global>
+</config>
