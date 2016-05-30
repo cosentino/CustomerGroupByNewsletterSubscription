@@ -6,6 +6,13 @@
         </Gufo_CustomerGroupByNewsletterSubscription>
     </modules>
     <frontend>
+        <layout>
+            <updates>
+                <Gufo_CustomerGroupByNewsletterSubscription>
+                    <file>gufo_customerGroupByNewsletterSubscription.xml</file>
+                </Gufo_CustomerGroupByNewsletterSubscription>
+            </updates>
+        </layout>
         <routers>
             <newsletter>
                 <args>
