@@ -354,17 +354,17 @@ class Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber extends Mage_C
 
         //BEGIN COSENTINOSHOP: Presaldi (27/05/2016)
         //Set customer group depending on the newsletter subscription status
-
-        if ($this->getStatus() == self::STATUS_SUBSCRIBED) {
-            if ($customerSession->isLoggedIn()) {
-                $customer = $customerSession->getCustomer();
+        if ($customerSession->isLoggedIn()) {
+            $customer = $customerSession->getCustomer();
+            if ($this->getStatus() == self::STATUS_SUBSCRIBED) {
+                $customer->setGroupId(self::CUSTOMER_GROUP_ID_GENERAL_NEWSLETTER);
+            } else {
                 $storeId = $this->getStoreId() ? $this->getStoreId() : Mage::app()->getStore()->getId();
                 $groupId = Mage::getStoreConfig(Mage_Customer_Model_Group::XML_PATH_DEFAULT_ID, $storeId);
                 $customer->setGroupId($groupId);
-                $customer->save();
             }
+            $customer->save();
         }
-
         //END
 
         try {
@@ -398,7 +398,9 @@ class Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber extends Mage_C
         $customerSession = Mage::getSingleton('customer/session');
         if ($customerSession->isLoggedIn()) {
             $customer = $customerSession->getCustomer();
-            $customer->setGroupId(self::CUSTOMER_GROUP_ID_GENERAL_NEWSLETTER);
+            $storeId = $this->getStoreId() ? $this->getStoreId() : Mage::app()->getStore()->getId();
+            $groupId = Mage::getStoreConfig(Mage_Customer_Model_Group::XML_PATH_DEFAULT_ID, $storeId);
+            $customer->setGroupId($groupId);
         }
         //END
 
