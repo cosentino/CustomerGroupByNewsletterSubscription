@@ -352,6 +352,21 @@ class Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber extends Mage_C
 
         $this->setIsStatusChanged(true);
 
+        //BEGIN COSENTINOSHOP: Presaldi (27/05/2016)
+        //Set customer group depending on the newsletter subscription status
+
+        if ($this->getStatus() == self::STATUS_SUBSCRIBED) {
+            if ($customerSession->isLoggedIn()) {
+                $customer = $customerSession->getCustomer();
+                $storeId = $this->getStoreId() ? $this->getStoreId() : Mage::app()->getStore()->getId();
+                $groupId = Mage::getStoreConfig(Mage_Customer_Model_Group::XML_PATH_DEFAULT_ID, $storeId);
+                $customer->setGroupId($groupId);
+                $customer->save();
+            }
+        }
+
+        //END
+
         try {
             $this->save();
             if ($isConfirmNeed === true
@@ -383,9 +398,7 @@ class Gufo_CustomerGroupByNewsletterSubscription_Model_Subscriber extends Mage_C
         $customerSession = Mage::getSingleton('customer/session');
         if ($customerSession->isLoggedIn()) {
             $customer = $customerSession->getCustomer();
-            $storeId = $this->getStoreId() ? $this->getStoreId() : Mage::app()->getStore()->getId();
-            $groupId = Mage::getStoreConfig(Mage_Customer_Model_Group::XML_PATH_DEFAULT_ID, $storeId);
-            $customer->setGroupId($groupId);
+            $customer->setGroupId(self::CUSTOMER_GROUP_ID_GENERAL_NEWSLETTER);
         }
         //END
 
