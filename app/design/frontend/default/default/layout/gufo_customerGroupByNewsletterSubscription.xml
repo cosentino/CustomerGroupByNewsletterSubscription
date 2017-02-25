@@ -2,7 +2,7 @@
 <layout version="0.1.0">
     <default>
         <reference name="before_body_end">
-            <block type="page/html_head" name="jsfooter" as="jsfooter" template="angelobiz_codice/jsfooter.phtml">
+            <block type="page/html_head" name="jsfooter" as="jsfooter" template="gufo_customergroupbynewslettersubscription/jsfooter.phtml">
                 <action method="addJs"><script>customerGroupByNewsletterSubscription/redirectNewsletterForm.js</script></action>
             </block>
         </reference>

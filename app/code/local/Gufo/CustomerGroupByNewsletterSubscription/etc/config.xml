@@ -8,9 +8,9 @@
     <frontend>
         <layout>
             <updates>
-                <Gufo_CustomerGroupByNewsletterSubscription>
+                <customergroupbynewslettersubscription>
                     <file>gufo_customerGroupByNewsletterSubscription.xml</file>
-                </Gufo_CustomerGroupByNewsletterSubscription>
+                </customergroupbynewslettersubscription>
             </updates>
         </layout>
         <routers>
